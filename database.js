@@ -4,12 +4,14 @@ const pgp = require('pg-promise')()
 const db = pgp(connectionString)
 
 import SimpleSelect from './models/simple_select'
+import SimpleInsert from './models/simple_insert'
 
 const genericFunctions = tableName => {
 
   return {
     all: (page, size) => db.any( (new SimpleSelect( tableName, { page, size } )).toString()),
     one: id => db.one( (new SimpleSelect( tableName, { where: [{ id }] } )).toString() )
+    create: () => db.one( (new SimpleInsert( tableName, { where: [{ id }] } )).toString() )
   }
 }
 
@@ -24,7 +26,7 @@ const User = Object.assign(
       )
     }
   },
-  
+
   genericFunctions( 'users' )
 )
 
