@@ -18,7 +18,7 @@ Creating this web application will provide exposure to:
 
 ##Specifications
 
-- [ ] Users can sign up and log into their account.  **100% complete**
+- [ ] Users can sign up and log into their account.
 
 - [ ] Admin users can add, delete, edit books into the system via an admin page. We can add books, delete books, and we made progress on editing, but didn't complete in time.
 
@@ -26,7 +26,7 @@ Creating this web application will provide exposure to:
 
 - [ ] Users can search for books by title OR by author OR by genre, and search results will be presented in a new page.
 
-- [ ] Users can refine search by genre & other methods. (faceted search) **95% complete** We're *so close* to being done with this, we just couldn't get the bugs out in time :<
+- [ ] Users can refine search by genre & other methods. (faceted search) We're *so close* to being done with this, we just couldn't get the bugs out in time 
 
 - [ ] Users can view book details on a book detail page, linked to from the listing or search pages.
 
