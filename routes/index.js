@@ -6,9 +6,7 @@ const router = express.Router()
 router.get('/', (req, res, next) => {
   Promise.all([ Book.all(), Author.all(), Genre.all()])
     .then( results => {
-      const books = results[ 0 ]
-      const authors = results[ 1 ]
-      const genres = results[ 2 ]
+      const [ books, authors, genres ] = results
 
       res.render( 'homepage', { books, authors, genres })
     })
