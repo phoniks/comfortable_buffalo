@@ -1,28 +1,27 @@
-<form role="form">
+<form action="/update">
           <fieldset>
             <div class="form-group">
               <label>Title:<label>
-              <input class="form-control" placeholder="Fear and Loathing" name="title" autofocus="">
+              <input class="form-control" placeholder="Fear and Loathing" value ="{{title}}" name="title">
             </div>
             <div class="form-group">
               <label>Author:<label>
-              <input class="form-control" placeholder="Hunter S. Thompson" name="author" autofocus="">
+              <input class="form-control" placeholder="Hunter S. Thompson" value ="{{author}}"name="author">
             </div>
 
             <div class="form-group">
               <label>Genre:<label>
-              <input class="form-control" placeholder="Gonzo Journalism" name="genre" autofocus="">
+              <input class="form-control" placeholder="Gonzo Journalism" value ="{{genre}}"name="genre">
             </div>
 
             <div class="form-group">
               <label>Cover Photo:<label>
-              <input class="form-control" placeholder="Gonzo Journalism" name="genre" autofocus="">
+              <input class="form-control" placeholder="Gonzo Journalism" value ="{{img_url}}"name="img_url">
             </div>
 
-            <br/>
             <div class="form-group">
               <label>Description:</label>
-                <textarea class="form-control" rows="5">
+                <textarea class="form-control" rows="5" value ="{{description}}">
                 </textarea>
             </div>
             <button class="btn btn-sm btn-success">Submit</button>

@@ -1,0 +1,11 @@
+<h1>{{AuthorName}} Details</h1>
+
+<p> {{Author Bio}} </p>
+
+<h2> Titles by {{AuthorName}} </h2>
+{{#each title}}
+<img> {{PosterURL}} </img>
+<h3> {{BookTitle}} </h3>
+<!-- Button to view this selection -->
+<a href="{{book_link}}" class="btn btn-primary btn-default"><span class="glyphicon glyphicon-book"></span> View this title</a>
+{{/each}}
