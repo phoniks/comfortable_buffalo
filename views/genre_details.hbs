@@ -1,0 +1,14 @@
+<h1>{{Genre}}</h1>
+
+<p> {{Genre Description}}  </p>
+
+<h2> {{Genre}} Titles </h2>
+<div class="results">
+  {{#each result}}
+  <div class="result">
+    <img> {{PosterURL}} </img>
+    <h3> {{BookTitle}} </h3>
+    <a href="{{bookDetailLink}}" class="btn btn-primary btn-default"><span class="glyphicon glyphicon-book"></span> View this title</a>
+    {{/each}}
+  </div>
+</div>

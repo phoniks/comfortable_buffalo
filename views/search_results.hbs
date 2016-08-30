@@ -1,0 +1,14 @@
+<h1>Search Results</h1>
+
+<h2> Showing results for: {{Query String}} </h2>
+<div class="results">
+{{#each result}}
+  <div>
+    <!-- This code should be duplicated for each result -->
+    <img> {{PosterURL}} </img>
+    <h4> {{BookTitle}} </h4>
+    <!-- Button to view this selection -->
+    <a href="{{bookDetailLink}}" class="btn btn-primary btn-default"><span class="glyphicon glyphicon-book"></span> View this title</a>
+  </div>
+  {{/each}}
+</div>
