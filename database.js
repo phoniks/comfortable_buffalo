@@ -5,12 +5,13 @@ const db = pgp(connectionString)
 
 import SimpleSelect from './models/simple_select'
 import SimpleInsert from './models/simple_insert'
+import { createSalt, hashPassword, comparePassword } from './config/hashPassword'
 
 const genericFunctions = tableName => {
 
   return {
     all: (page, size) => db.any( (new SimpleSelect( tableName, { page, size } )).toString()),
-    one: id => db.one( (new SimpleSelect( tableName, { where: [{ id }] } )).toString() ),
+    findOne: id => db.one( (new SimpleSelect( tableName, { where: [{ id }] } )).toString() ),
     create: () => db.one( (new SimpleInsert( tableName, { where: [{ id }] } )).toString() )
   }
 }
@@ -18,15 +19,23 @@ const genericFunctions = tableName => {
 const User = Object.assign(
   {
     find: (email, password) => {
-      const fields = [ 'id', 'email', 'name', 'bio', 'img_url', 'admin' ]
+      const fields = [ 'id', 'email', 'name', 'bio', 'image_url']
       const where = [ {email}, {password} ]
 
       return db.one(
         (new SimpleSelect( 'users', { where, fields } )).toString()
       )
+    },
+    createUser: ( email, password ) => {
+      return createSalt( password )
+        .then( hashPassword )
+        .then( hash => {
+          const password = hash
+
+          return db.one( (new SimpleInsert( 'users', { email, password } )).toString() )
+        })
     }
   },
-
   genericFunctions( 'users' )
 )
 
