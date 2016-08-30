@@ -59,3 +59,19 @@ CREATE TABLE users
   bio TEXT NOT NULL,
   image_url VARCHAR(255) NOT NULL
 );
+
+
+INSERT INTO
+  genres (name, description)
+VALUES
+  ('Young Adult', 'Desc'),
+  ('Sci Fi', 'Desc'),
+  ('Romance', 'Desc'),
+  ('Comedy', 'Desc'),
+  ('Fantasy', 'Desc'),
+  ('Space', 'Desc'),
+  ('Aliens', 'Desc'),
+  ('Strong Female Lead', 'Desc'),
+  ('Dystopia', 'Desc'),
+  ('Female Author', 'Desc'),
+  ('Classic', 'Desc');

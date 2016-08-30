@@ -34,7 +34,7 @@ class SimpleSelect {
     } else {
       const clause = this.filter.map( object =>{
         return Object.keys( object ).map( key => `${key}='${object[key]}'`)
-      }).reduce( (a, b) => a.concat( b ), [] )
+      }).reduce( (memo, item) => memo.concat( item ), [] )
 
       return ` WHERE ${clause.join( ' AND ' )}`
     }
