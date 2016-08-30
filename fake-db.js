@@ -73,12 +73,10 @@ const createAuthor = function(attributes){
     RETURNING
       id
   `
-  return db.one(sql, [attributes.image_url, attributes.name, attributes.bio])
+  return db.one(sql, [attributes.name, attributes.bio, attributes.image_url])
 }
 
 const createBook = function(attributes){
-  console.log('Attr', attributes)
-
   const sql = `
     INSERT INTO
       books (title, description, image_url)
@@ -112,4 +110,4 @@ const createBook = function(attributes){
     })
 }
 
-module.exports = { generate, truncateAllTable }
+module.exports = { generate }

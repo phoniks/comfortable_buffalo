@@ -35,4 +35,14 @@ const Book = Object.assign(
   genericFunctions( 'books' )
 )
 
-export { Book, User }
+const Author = Object.assign(
+  {},
+  genericFunctions( 'authors' )
+)
+
+const Genre = Object.assign(
+  {},
+  genericFunctions( 'genres' )
+)
+
+export { User, Book, Author, Genre }
