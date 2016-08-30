@@ -5,16 +5,6 @@ const db = pgp(connectionString);
 
 const faker = require('faker')
 
-const truncateAllTable = function(){
-  return db.none(`
-    TRUNCATE
-      book_authors,
-      authors,
-      book_genres,
-      books
-  `)
-}
-
 const generate = function(){
   return getAllGenres()
     .then(genres => {
