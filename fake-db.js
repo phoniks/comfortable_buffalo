@@ -73,7 +73,7 @@ const createAuthor = function(attributes){
     RETURNING
       id
   `
-  return db.one(sql, [attributes.image_url, attributes.name, attributes.bio])
+  return db.one(sql, [attributes.name, attributes.bio, attributes.image_url])
 }
 
 const createBook = function(attributes){
