@@ -12,7 +12,7 @@ const genericFunctions = tableName => {
   return {
     all: (page, size) => db.any( (new SimpleSelect( tableName, { page, size } )).toString()),
     findOne: id => db.one( (new SimpleSelect( tableName, { where: [{ id }] } )).toString() ),
-    create: () => db.one( (new SimpleInsert( tableName, { where: [{ id }] } )).toString() )
+    create: fields => db.one( (new SimpleInsert( tableName, { fields } )).toString() )
   }
 }
 
