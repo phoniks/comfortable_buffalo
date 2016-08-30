@@ -3,11 +3,9 @@ const connectionString = `postgres://${process.env.USER}@localhost:5432/${databa
 const pgp = require('pg-promise')()
 const db = pgp(connectionString)
 
-import bcrypt from 'bcrypt'
-const saltRounds = 10
-
 import SimpleSelect from './models/simple_select'
 import SimpleInsert from './models/simple_insert'
+import { createSalt, hashPassword, comparePassword } from './config/hashPassword'
 
 const genericFunctions = tableName => {
 
@@ -27,9 +25,17 @@ const User = Object.assign(
       return db.one(
         (new SimpleSelect( 'users', { where, fields } )).toString()
       )
+    },
+    createUser: ( email, password ) => {
+      return createSalt( password )
+        .then( hashPassword )
+        .then( hash => {
+          const password = hash
+
+          return db.one( (new SimpleInsert( 'users', { email, password } )).toString() )
+        })
     }
   },
-
   genericFunctions( 'users' )
 )
 

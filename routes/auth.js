@@ -19,13 +19,23 @@ router.get('/signup', ( req, res ) => {
   res.render('signup', {})
 })
 
-router.post( '/signup', ( req, res ) => {
-  const { username, password } = req.body
+router.post( '/signup', ( req, res, next ) => {
+  const { email, password } = req.body
 
-  User.create( email, password )
-    .then(user => {
-      req.login({ id: user.id, email}, null )
-      res.redirect('/')
+  User.createUser( email, password )
+    .then( user => {
+      console.log('User', user);
+
+      req.login({ id: user.id, email}, error => {
+        if( error ) {
+          next( error )
+        }
+
+        res.redirect( '/' )
+      })
+    })
+    .catch( error => {
+      res.render( 'signup', { message: 'That email address is not available.' })
     })
 })
 
