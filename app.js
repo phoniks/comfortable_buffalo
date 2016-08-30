@@ -1,13 +1,23 @@
 import express from 'express'
+import flash from 'connect-flash'
 import path from 'path'
 import favicon from 'serve-favicon'
 import logger from 'morgan'
 import cookieParser from 'cookie-parser'
 import bodyParser from 'body-parser'
+import session from 'express-session'
+
+import passport from './config/passport'
 
 import routes from './routes/index'
 import users from './routes/users'
 import auth from './routes/auth'
+
+const sessionConfig = {
+  secret: 'blarg',
+  resave: false,
+  saveUninitialized: false
+}
 
 const app = express()
 
@@ -22,6 +32,11 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
+app.use(session( sessionConfig ))
+app.use(flash())
+
+app.use( passport.initialize() )
+app.use( passport.session() )
 
 app.use('/', routes)
 app.use('/users', users)
