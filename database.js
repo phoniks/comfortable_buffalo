@@ -41,7 +41,9 @@ const User = Object.assign(
 )
 
 const Book = Object.assign(
-  {},
+  {
+    
+  },
   genericFunctions( 'books' )
 )
 

@@ -1,12 +1,11 @@
 <h1>Book Details</h1>
 
-<img>{{BigPoster}} </img>
-<h2> {{BookTitle}} </h2>
-<a href="{{AuthorDetailLink}}"> {{AuthorName}} </a>
-<a href="{{GenreDetailLink}}"> {{Genre}} </a>
-<p> {{BookDescription}}</p>
+<img>{{book.image_url}} </img>
+<h2> {{book.title}} </h2>
+<p> {{book.description}}</p>
 
 
+{{!-- 
 <h3> Other {{Genre}} books </h3>
 {{#each genre_result}}
 <img> {{PosterURL}} </img>
@@ -23,3 +22,4 @@
 <!-- Button to view this selection -->
 <a href="{{bookDetailLink}}" class="btn btn-primary btn-default"><span class="glyphicon glyphicon-book"></span> View this title</a>
 {{/each}}
+--}}

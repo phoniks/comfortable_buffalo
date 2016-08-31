@@ -14,6 +14,8 @@ import users from './routes/users'
 import auth from './routes/auth'
 import authors from './routes/authors'
 import genres from './routes/genres'
+import books from './routes/books'
+
 
 const sessionConfig = {
   secret: 'blarg',
@@ -45,6 +47,7 @@ app.use('/users', users)
 app.use('/auth', auth)
 app.use('/authors', authors)
 app.use('/genres', genres)
+app.use('/books', books)
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
