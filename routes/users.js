@@ -7,4 +7,4 @@ router.get('/', ( req, res ) => {
   res.render('profile', { user })
 })
 
-module.exports = router
+export default router
