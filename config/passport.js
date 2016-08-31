@@ -22,9 +22,8 @@ passport.serializeUser( ( user, done ) => {
 
 passport.deserializeUser( ( id, done ) => {
   User.findOne( id ).then( user => {
-    const { id, email, name, bio, image_url } = user
-
-    done( null, { id, email, name, bio, image_url } )
+    const { id, email } = user
+    done( null, { id, email } )
   })
   .catch( error => done( error ) )
 })

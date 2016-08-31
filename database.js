@@ -21,19 +21,18 @@ const genericFunctions = tableName => {
 const User = Object.assign(
   {
     find: (email, password) => {
-      const fields = [ 'id', 'email', 'name', 'bio', 'image_url']
-      const where = [ {email}, {password} ]
+      const fields = [ 'id', 'email', 'password' ]
+      const where = [ {email} ]
 
       return db.one(
         (new SimpleSelect( 'users', { where, fields } )).toString()
-      )
+      ).then( user => comparePassword( password, user ) )
     },
     createUser: ( email, password ) => {
       return createSalt( password )
         .then( hashPassword )
         .then( hash => {
           const password = hash
-
           return db.one( (new SimpleInsert( 'users', { email, password } )).toString() )
         })
     }
