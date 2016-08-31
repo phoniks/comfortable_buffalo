@@ -12,6 +12,8 @@ import passport from './config/passport'
 import routes from './routes/index'
 import users from './routes/users'
 import auth from './routes/auth'
+import authors from './routes/authors'
+
 
 const sessionConfig = {
   secret: 'blarg',
@@ -41,6 +43,7 @@ app.use( passport.session() )
 app.use('/', routes)
 app.use('/users', users)
 app.use('/auth', auth)
+app.use('/authors', authors)
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

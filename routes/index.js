@@ -11,13 +11,4 @@ router.get('/', (req, res, next) => {
     })
 })
 
-router.get('/author-details/:author_id', ( req, res ) => {
-  const { author_id } = req.params
-
-  Author.findOne(author_id).then(author => {
-    console.log(author);
-    res.render('author_details', { author })
-  })
-})
-
 export default router

@@ -5,6 +5,8 @@ const db = pgp(connectionString)
 
 import SimpleSelect from './models/simple_select'
 import SimpleInsert from './models/simple_insert'
+import SimpleJoin from './models/simple_join'
+
 import { createSalt, hashPassword, comparePassword } from './config/hashPassword'
 
 const genericFunctions = tableName => {
@@ -45,7 +47,13 @@ const Book = Object.assign(
 )
 
 const Author = Object.assign(
-  {},
+  {
+    getBooks: id => { return db.any(
+      `SELECT books.* FROM books JOIN book_authors ON books.id = book_authors.book_id WHERE book_authors.author_id=$1`,
+      [id]
+      )
+    }
+  },
   genericFunctions( 'authors' )
 )
 
