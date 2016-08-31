@@ -48,10 +48,15 @@ const Book = Object.assign(
 
 const Author = Object.assign(
   {
-    getBooks: id => { return db.any(
-      `SELECT books.* FROM books JOIN book_authors ON books.id = book_authors.book_id WHERE book_authors.author_id=$1`,
-      [id]
+    getBooks: id => {
+      const sql = new SimpleJoin(
+        'books',
+        { books: [ '*' ], authors: [ 'name', [ 'id', 'author_id' ] ] },
+        { book_authors: ['book_authors.book_id', 'books.id'], authors: [ 'book_authors.author_id', 'authors.id' ] },
+        [ 'book_authors.author_id', 1 ]
       )
+
+      return db.any( sql.toString() )
     }
   },
   genericFunctions( 'authors' )
