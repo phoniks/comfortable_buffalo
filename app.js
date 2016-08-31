@@ -13,7 +13,7 @@ import routes from './routes/index'
 import users from './routes/users'
 import auth from './routes/auth'
 import authors from './routes/authors'
-
+import genres from './routes/genres'
 
 const sessionConfig = {
   secret: 'blarg',
@@ -44,6 +44,7 @@ app.use('/', routes)
 app.use('/users', users)
 app.use('/auth', auth)
 app.use('/authors', authors)
+app.use('/genres', genres)
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

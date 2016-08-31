@@ -1,5 +1,13 @@
 <div class="jumbotron">
   <div class="container">
+    <img class="thumbnail" src="{{image_url}}" />
+    <h3> {{author.name}} </h3>
+    <p>{{author.bio}}</p>
+  </div>
+</div>
+
+<div class="jumbotron">
+  <div class="container">
     {{#each books}}
       <img class="thumbnail" src="{{image_url}}" />
       <h3> {{title}} </h3>

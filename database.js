@@ -51,9 +51,9 @@ const Author = Object.assign(
     getBooks: id => {
       const sql = new SimpleJoin(
         'books',
-        { books: [ '*' ], authors: [ 'name', [ 'id', 'author_id' ] ] },
+        { books: [ '*' ] },
         { book_authors: ['book_authors.book_id', 'books.id'], authors: [ 'book_authors.author_id', 'authors.id' ] },
-        [ 'book_authors.author_id', 1 ]
+        [ 'book_authors.author_id', id ]
       )
 
       return db.any( sql.toString() )
@@ -63,7 +63,18 @@ const Author = Object.assign(
 )
 
 const Genre = Object.assign(
-  {},
+  {
+    getBooks: id => {
+      const sql = new SimpleJoin(
+        'books',
+        { books: [ '*' ] },
+        { book_genres: ['book_genres.book_id', 'books.id'], genres: [ 'book_genres.genre_id', 'genres.id' ] },
+        [ 'book_genres.genre_id', id ]
+      )
+
+      return db.any( sql.toString() )
+    }
+  },
   genericFunctions( 'genres' )
 )
 
