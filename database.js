@@ -47,11 +47,10 @@ const Book = Object.assign(
     getBookInfo: id =>{
       const sql = new SimpleJoin(
         'books',
-        {books: ['*'], authors: ['name', ['id', 'author_id']], genres: ['name', 'book_genre'] },
-        {book_authors: ['book_authors.book_id', 'books.id'], authors: ['book_authors.author_id', 'authors.id'], book_genres: ['genre_id', 'books.id'] },
-        ['books.id', id]
+        { books: [ '*' ], authors: [['id', 'author_id']], genres: [['id', 'genre_id']] },
+        { book_authors: ['book_authors.book_id', 'books.id'], authors: [ 'book_authors.author_id', 'authors.id' ], book_genres: ['book_genres.book_id','books.id'], genres: ['book_genres.book_id','books.id'] },
+        [ 'books.id', id ]
       )
-      debug(sql)
       return db.any(sql.toString())
     }
   },
