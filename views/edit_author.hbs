@@ -5,17 +5,16 @@
           <h3 class="panel-title">Edit authors info</h3>
       </div>
       <div class="panel-body">
-        <form action="/update">
+        <form method="post" action="/authors/edit_author/{{id}}" role="form" >
           <fieldset>
             <div class="form-group">
               <label>Name:<label>
-              <input class="form-control" value="{{name}}" name="name">
+              <input class="form-control" value="{{author.name}}" name="name" type="text">
             </div>
             <br/>
             <div class="form-group">
               <label>Bio:</label>
-                <textarea class="form-control" rows="5" value="{{bio}}">
-                </textarea>
+              <textarea class="form-control" type="text" rows="5" name="bio">{{author.bio}}</textarea>
             </div>
             <button class="btn btn-sm btn-success">Submit</button>
           </fieldset>

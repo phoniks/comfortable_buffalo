@@ -1,5 +1,8 @@
 <div class="jumbotron">
   <div class="container">
+    <a class="btn btn-success btn-lg pull-right" href="/authors/edit/{{author_id}}" role="button">
+      Edit
+    </a>
     <img class="thumbnail" src="{{image_url}}" />
     <h3> {{author.name}} </h3>
     <p>{{author.bio}}</p>
@@ -13,6 +16,6 @@
       <h3> {{title}} </h3>
       <p>{{description}}</p>
       <a href="#" class="btn btn-primary btn-default"><span class="glyphicon glyphicon-book"></span> View this title</a>
-      {{/each}}
+    {{/each}}
   </div>
 </div>
