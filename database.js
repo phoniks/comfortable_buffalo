@@ -6,14 +6,16 @@ const db = pgp(connectionString)
 import SimpleSelect from './models/simple_select'
 import SimpleInsert from './models/simple_insert'
 import SimpleJoin from './models/simple_join'
+import SimpleUpdate from './models/simple_update'
 
 import { createSalt, hashPassword, comparePassword } from './config/hashPassword'
 
 const genericFunctions = tableName => {
 
   return {
-    all: (page, size) => db.any( (new SimpleSelect( tableName, { page, size } )).toString()),
+    all: ( page, size ) => db.any( (new SimpleSelect( tableName, { page, size } )).toString()),
     findOne: id => db.one( (new SimpleSelect( tableName, { where: [{ id }] } )).toString() ),
+    update: ( id, fields ) => db.one( (new SimpleUpdate( tableName, id, fields )).toString() ),
     create: fields => db.one( (new SimpleInsert( tableName, { fields } )).toString() )
   }
 }
@@ -35,8 +37,19 @@ const User = Object.assign(
           const password = hash
           return db.one( (new SimpleInsert( 'users', { email, password } )).toString() )
         })
+    },
+    getBooks: id => {
+      const sql = new SimpleJoin(
+        'books',
+        { books: [ '*' ] },
+        { book_favorites: ['book_favorites.book_id', 'books.id'], users: [ 'book_favorites.user_id', 'users.id' ] },
+        [ 'book_favorites.user_id', id ]
+      )
+
+      return db.any( sql.toString() )
     }
   },
+
   genericFunctions( 'users' )
 )
 
