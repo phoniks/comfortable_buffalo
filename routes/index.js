@@ -4,10 +4,9 @@ const router = express.Router()
 
 /* GET home page. */
 router.get('/', (req, res, next) => {
-  Promise.all([ Book.all(), Author.all(), Genre.all()])
+  Promise.all([ Book.all(1,4), Author.all(1,4), Genre.all(1,4)])
     .then( results => {
       const [ books, authors, genres ] = results
-      console.log(books)
       res.render( 'homepage', { books, authors, genres })
     })
 })
