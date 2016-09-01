@@ -6,6 +6,8 @@ const db = pgp(connectionString)
 import SimpleSelect from './models/simple_select'
 import SimpleInsert from './models/simple_insert'
 import SimpleJoin from './models/simple_join'
+import Debug from 'debug'
+const debug = Debug( 'bookstore_buffalo:database' )
 
 import { createSalt, hashPassword, comparePassword } from './config/hashPassword'
 
@@ -42,7 +44,16 @@ const User = Object.assign(
 
 const Book = Object.assign(
   {
-    
+    getBookInfo: id =>{
+      const sql = new SimpleJoin(
+        'books',
+        {books: ['*'], authors: ['name', ['id', 'author_id']], genres: ['name', 'book_genre'] },
+        {book_authors: ['book_authors.book_id', 'books.id'], authors: ['book_authors.author_id', 'authors.id'], book_genres: ['genre_id', 'books.id'] },
+        ['books.id', id]
+      )
+      debug(sql)
+      return db.any(sql.toString())
+    }
   },
   genericFunctions( 'books' )
 )

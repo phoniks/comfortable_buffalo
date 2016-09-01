@@ -7,10 +7,12 @@ const router = express.Router()
 
 router.get('/:id', ( req, res ) => {
   const { id } = req.params
-  
-    res.render('book_details', { book })
+  Book.getBookInfo(id).then( results => {
+    debug(results)
+    res.render('book_details', { results })
   }).catch(error => {
     res.send({error, message: error.message })
   })
+})
 
 export default router
