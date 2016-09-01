@@ -1,0 +1,39 @@
+<h1>Book Details</h1>
+
+<div class="jumbotron">
+  <div class="container">
+    <img width="75px" height="75px" class="thumbnail" src="{{book.image_url}}" />
+    <h3>{{book.title}}</h3>
+    <p>{{book.description}}</p>
+  </div>
+</div>
+
+{{#if booksInGenre}}
+<div class="other-results">
+  <h3>Other {{otherGenre}} books </h3>
+  {{#each booksInGenre}}
+  <div class="book">
+    <img width="75px" height="75px" class="thumbnail" src={{image_url}} />
+    <h4>{{title}}</h4>
+    <a href="/books/{{id}}" class="btn btn-primary btn-default">
+      <span class="glyphicon glyphicon-book"></span> View this title
+    </a>
+  </div>
+{{/each}}
+</div>
+{{/if}}
+
+{{#if booksByAuthor}}
+<div class="other-results">
+  <h3> Other books by {{otherAuthor}} </h3>
+  {{#each booksByAuthor}}
+  <div class="book">
+    <img width="75px" height="75px" class="thumbnail" src={{image_url}} />
+    <h4>{{title}}</h4>
+    <a href="/books/{{id}}" class="btn btn-primary btn-default">
+      <span class="glyphicon glyphicon-book"></span> View this title
+    </a>
+  </div>
+  {{/each}}
+</div>
+{{/if}}

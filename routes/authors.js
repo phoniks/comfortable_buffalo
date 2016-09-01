@@ -1,5 +1,7 @@
 import database, { Author } from '../database'
 import express from 'express'
+import Debug from 'debug'
+const debug = Debug( 'bookstore_buffalo:route:authors' )
 const router = express.Router()
 
 router.get('/:id', ( req, res ) => {
