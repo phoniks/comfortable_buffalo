@@ -5,16 +5,16 @@
           <h3 class="panel-title">Edit genres info</h3>
       </div>
       <div class="panel-body">
-        <form role="form">
+        <form method="post" action="/genres/edit_genre/{{id}}" role="form">
           <fieldset>
             <div class="form-group">
               <label>Name:<label>
-              <input class="form-control" placeholder="Science Fiction" name="name" value="{{name}}">
+              <input class="form-control" value="{{genre.name}}" name="name" type="text">
             </div>
             <br/>
             <div class="form-group">
               <label>Description:</label>
-                <textarea class="form-control" rows="5"></textarea>
+                <textarea class="form-control" type="text" rows="5" name="description">{{genre.description}}</textarea>
             </div>
             <button class="btn btn-sm btn-success">Submit</button>
           </fieldset>
