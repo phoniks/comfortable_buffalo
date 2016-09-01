@@ -14,7 +14,6 @@ class SimpleInsert {
 
   toString(){
     const sql = `INSERT INTO ${this.insertInto()} VALUES ${this.insertValues()} RETURNING id`
-    console.log( sql )
     return sql
   }
 
