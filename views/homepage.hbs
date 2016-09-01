@@ -1,10 +1,11 @@
 <div class="jumbotron">
   <div class="container">
     <div class="row">
+    <h2> Books </h2>
       {{#each books}}
         <div class="col-md-3">
           <img class="img-responsive" src="{{image_url}}" alt="Smiley face" />
-          <h3 class="display-3">{{title}}</h3>
+          <h4 class="display-3">{{title}}</h4>
           <hr class="m-y-md">
           <p class="lead">
             <a class="btn btn-success btn-lg" href="/books/{{id}}" role="button">
@@ -20,9 +21,10 @@
 <div class="jumbotron">
   <div class="container">
     <div class="row">
+    <h2> Genres </h2>
       {{#each genres}}
         <div class="col-md-3">
-          <h3 class="display-3">{{name}}</h3>
+          <h4 class="display-3">{{name}}</h4>
           <hr class="m-y-md">
           <p class="lead">
             <a class="btn btn-success btn-lg" href="/genres/{{id}}" role="button">
@@ -38,10 +40,11 @@
 <div class="jumbotron">
   <div class="container">
     <div class="row">
+    <h2> Authors </h2>
       {{#each authors}}
         <div class="col-md-3">
           <img class="img-responsive" src="{{image_url}}" alt="Smiley face" />
-          <h3 class="display-3">{{name}}</h3>
+          <h4 class="display-3">{{name}}</h4>
           <hr class="m-y-md">
           <p class="lead">
             <a class="btn btn-success btn-lg" href="/authors/{{id}}" role="button">
