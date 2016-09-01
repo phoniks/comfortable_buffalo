@@ -13,9 +13,12 @@
             <div class=" col-md-9 col-lg-9 ">
                 <h4>BOOK FAVORITES:</h4>
                 <ul>
-                  <li>BOOK</li>
-                  <li>BOOK</li>
-                  <li>BOOK</li>
+                  {{#each books}}
+                    <li>
+                      <img class="thumbnail" src="{{image_url}}" alt="Book Pic" />
+                      {{title}}
+                    </li>
+                  {{/each}}
                 </ul>
             </div>
           </div>

@@ -1,10 +1,15 @@
 import express from 'express'
+import database, { User } from '../database'
+
 const router = express.Router()
 
 /* GET users listing. */
 router.get('/', ( req, res ) => {
   const { user } = req
-  res.render('profile', { user })
+  User.getBooks(user.id).then(books => {
+    console.log('User Favorites', books);
+    res.render('profile', { user, books })
+  })
 })
 
 export default router
