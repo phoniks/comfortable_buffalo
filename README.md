@@ -18,19 +18,19 @@ Creating this web application will provide exposure to:
 
 ##Specifications
 
-- [ ] Users can sign up and log into their account.
+- [x] Users can sign up and log into their account.
 
-- [ ] Users can add, delete, edit books into the system via an edit pages. We can add books, delete books, and we made progress on editing, but didn't complete in time.
+- [ ] Users can add, delete, edit books into the system via an edit pages.
 
-- [ ] Books entered in the system are listed on the home page, in pages of 10
+- [x] Books entered in the system are listed on the home page, in pages of 10
 
 - [ ] Users can search for books by title OR by author OR by genre, and search results will be presented in a new page.
 
-- [ ] Users can refine search by genre & other methods. (faceted search) We're *so close* to being done with this, we just couldn't get the bugs out in time
+- [ ] Users can refine search by genre & other methods. (faceted search)
 
-- [ ] Users can view book details on a book detail page, linked to from the listing or search pages.
+- [x] Users can view book details on a book detail page, linked to from the listing or search pages.
 
-- [ ] All code submissions are peer reviewed via GitHub PR by at least two members of the team, and master is always in a stable state (tests passed, site functions)
+- [x] All code submissions are peer reviewed via GitHub PR by at least two members of the team, and master is always in a stable state (tests passed, site functions)
 
 ###Required
 
@@ -38,13 +38,13 @@ Creating this web application will provide exposure to:
 
 Quality Rubric
 
-- [ ] Code is well formatted without any linting errors
+- [x] Code is well formatted without any linting errors
 
-- [ ] Variables, functions, css classes, etc. are meaningfully named (no comments exist in code to explain functionality - the names serve that function)
+- [x] Variables, functions, css classes, etc. are meaningfully named (no comments exist in code to explain functionality - the names serve that function)
 
-- [ ] Functions are small and serve a single purpose
+- [x] Functions are small and serve a single purpose
 
-- [ ] Code is well organized into a meaningful file structure
+- [x] Code is well organized into a meaningful file structure
 
 - [ ] Code is reasonably tested with a test suite
 
