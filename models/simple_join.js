@@ -1,3 +1,6 @@
+import Debug from 'debug'
+const debug = Debug( 'bookstore_buffalo:models:simplejoin' )
+
 class SimpleJoin {
   constructor( table, columns, joins, filter ){
     this.table = table
@@ -41,3 +44,9 @@ class SimpleJoin {
 }
 
 export default SimpleJoin
+
+
+// SELECT books.*, authors.name as author_name, authors.id as author_id
+// FROM books
+// JOIN book_authors ON book_authors.book_id=books.id JOIN authors ON book_authors.author_id=authors.id
+// WHERE book_authors.author_id=1
