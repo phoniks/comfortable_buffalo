@@ -1,14 +1,19 @@
-<h1>Search Results</h1>
-
-<h2> Showing results for: {{Query String}} </h2>
-<div class="results">
-{{#each result}}
-  <div>
-    <!-- This code should be duplicated for each result -->
-    <img> {{PosterURL}} </img>
-    <h4> {{BookTitle}} </h4>
-    <!-- Button to view this selection -->
-    <a href="{{bookDetailLink}}" class="btn btn-primary btn-default"><span class="glyphicon glyphicon-book"></span> View this title</a>
+<div class="jumbotron">
+  <div class="container">
+    <div class="row">
+    <h2> Books </h2>
+      {{#each books}}
+        <div class="col-md-3">
+          <img class="img-responsive" src="{{image_url}}" alt="Smiley face" />
+          <h4 class="display-3">{{title}}</h4>
+          <hr class="m-y-md">
+          <p class="lead">
+            <a class="btn btn-success btn-lg" href="/books/{{id}}" role="button">
+              Details
+            </a>
+          </p>
+        </div>
+      {{/each}}
+    </div>
   </div>
-  {{/each}}
 </div>
