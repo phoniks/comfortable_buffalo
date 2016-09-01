@@ -3,30 +3,47 @@ import express from 'express'
 import Debug from 'debug'
 const debug = Debug( 'bookstore_buffalo:route:books' )
 
-  const router = express.Router()
+const router = express.Router()
 
-router.get('/:id', ( req, res ) => {
-  const { id } = req.params
-  Promise.all( [Book.getBookInfo(id) ])
-    .then(result => {
-      const results = result[0][0]
-      const authId = results.author_id
-      const genreId = results.genre_id
-      debug('authId: '+authId+' GenreId: '+genreId)
-      return Promise.all([
-        Author.getBooks(authId),
-        Genre.getBooks(genreId),
-        new Promise( (reject, resolve) => resolve(results))
+const getBook = id =>
+  Book.findOne( id )
+    .then( book =>
+      Promise.all([
+        Promise.resolve( book ),
+        Author.forBook( id ),
+        Genre.forBook( id )
       ])
-      .then(books =>{
-        console.log(books)
-        const [booksByAuthor, booksByGenre, thisBooksData] = books
-        debug(booksByAuthor+' '+booksByGenre+' '+thisBooksData)
+    )
+
+router.get( '/:id', ( req, res ) => {
+  const { id } = req.params
+
+  getBook( id )
+    .then( result => {
+      const [ book, authors, genres ] = result
+
+      return Promise.all([
+        Promise.resolve( book ),
+        Promise.resolve( authors ),
+        Promise.resolve( genres ),
+        Genre.booksIn( genres[ 0 ].id ),
+        Author.booksBy( authors[ 0 ].id )
+      ])
+    })
+    .then( result => {
+      const [ book, authors, genres, booksInGenre, booksByAuthor ] = result
+
+      const otherGenreBooks = booksInGenre.filter( genreBook => genreBook.id !== book.id )
+      const otherAuthorBooks = booksByAuthor.filter( authorBook => authorBook.id !== book.id )
+
+      res.render( 'books/details', {
+        book, authors, genres,
+        booksInGenre: otherGenreBooks,
+        booksByAuthor: otherAuthorBooks,
+        otherGenre: genres[ 0 ].name,
+        otherAuthor: authors[ 0 ].name
       })
-      res.render('book_details', { thisBooksData, booksByAuthor, booksByGenre })
-    }).catch(error => {
-    res.send(error.message)
-  })
+    }).catch(error => res.send( error.message ) )
 })
 
 export default router

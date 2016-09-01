@@ -1,3 +1,5 @@
+'use strict';
+
 const databaseName = 'bookstore_buffalo'
 const connectionString = `postgres://${process.env.USER}@localhost:5432/${databaseName}`
 const pgp = require('pg-promise')();

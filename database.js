@@ -51,7 +51,8 @@ const Book = Object.assign(
         { book_authors: ['book_authors.book_id', 'books.id'], authors: [ 'book_authors.author_id', 'authors.id' ], book_genres: ['book_genres.book_id','books.id'], genres: ['book_genres.book_id','books.id'] },
         [ 'books.id', id ]
       )
-      return db.any(sql.toString())
+
+      return db.any( sql.toString() )
     }
   },
   genericFunctions( 'books' )
@@ -68,8 +69,29 @@ const Author = Object.assign(
       )
 
       return db.any( sql.toString() )
+    },
+    forBook: id => {
+      const sql = new SimpleJoin(
+        'authors',
+        { authors: [ '*' ] },
+        { book_authors: [ 'book_authors.author_id', 'authors.id' ] },
+        [ 'book_authors.book_id', id ]
+      )
+
+      return db.any( sql.toString() )
+    },
+    booksBy: authorId => {
+      const sql = new SimpleJoin(
+        'books',
+        { 'books': [ 'id', 'title', 'image_url' ] },
+        { book_authors: [ 'book_authors.book_id', 'books.id' ] },
+        [ 'book_authors.author_id', authorId ]
+      )
+
+      return db.any( sql.toString() )
     }
   },
+
   genericFunctions( 'authors' )
 )
 
@@ -81,6 +103,26 @@ const Genre = Object.assign(
         { books: [ '*' ] },
         { book_genres: ['book_genres.book_id', 'books.id'], genres: [ 'book_genres.genre_id', 'genres.id' ] },
         [ 'book_genres.genre_id', id ]
+      )
+
+      return db.any( sql.toString() )
+    },
+    forBook: id => {
+      const sql = new SimpleJoin(
+        'genres',
+        { genres: [ '*' ] },
+        { book_genres: [ 'book_genres.genre_id', 'genres.id' ] },
+        [ 'book_genres.book_id', id ]
+      )
+
+      return db.any( sql.toString() )
+    },
+    booksIn: genreId => {
+      const sql = new SimpleJoin(
+        'books',
+        { 'books': [ 'id', 'title', 'image_url' ] },
+        { book_genres: [ 'book_genres.book_id', 'books.id' ] },
+        [ 'book_genres.genre_id', genreId ]
       )
 
       return db.any( sql.toString() )
