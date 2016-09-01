@@ -4,9 +4,11 @@ const router = express.Router()
 
 router.get('/:id', ( req, res ) => {
   const { id } = req.params
-  Author.getBooks(id).then( books => {
-    res.render('author_details', { books })
-  })
+  Promise.all([ Author.findOne(id), Author.getBooks(id) ])
+    .then(results => {
+      const [ author, books ] = results
+      res.render('author_details', { author, books })
+    })
 })
 
 export default router

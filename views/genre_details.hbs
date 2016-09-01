@@ -1,14 +1,18 @@
-<h1>{{Genre}}</h1>
+<div class="jumbotron">
+  <div class="container">
+    <img class="thumbnail" src="{{image_url}}" />
+    <h3> {{genre.name}} </h3>
+    <p>{{genre.description}}</p>
+  </div>
+</div>
 
-<p> {{Genre Description}}  </p>
-
-<h2> {{Genre}} Titles </h2>
-<div class="results">
-  {{#each result}}
-  <div class="result">
-    <img> {{PosterURL}} </img>
-    <h3> {{BookTitle}} </h3>
-    <a href="{{bookDetailLink}}" class="btn btn-primary btn-default"><span class="glyphicon glyphicon-book"></span> View this title</a>
-    {{/each}}
+<div class="jumbotron">
+  <div class="container">
+    {{#each books}}
+      <img class="thumbnail" src="{{image_url}}" />
+      <h3> {{title}} </h3>
+      <p>{{description}}</p>
+      <a href="#" class="btn btn-primary btn-default"><span class="glyphicon glyphicon-book"></span> View this title</a>
+      {{/each}}
   </div>
 </div>
