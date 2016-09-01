@@ -27,4 +27,9 @@ router.post('/edit_author/:id', ( req, res ) => {
   })
 })
 
+router.get('/delete/:id', ( req, res ) => {
+  const { id } = req.params
+  Author.delete(id).then( result => res.redirect( '/' ) )
+})
+
 export default router

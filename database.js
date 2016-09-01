@@ -9,6 +9,7 @@ import SimpleJoin from './models/simple_join'
 import Debug from 'debug'
 const debug = Debug( 'bookstore_buffalo:database' )
 import SimpleUpdate from './models/simple_update'
+import SimpleDelete from './models/simple_delete'
 
 import { createSalt, hashPassword, comparePassword } from './config/hashPassword'
 
@@ -16,9 +17,10 @@ const genericFunctions = tableName => {
 
   return {
     all: ( page, size ) => db.any( (new SimpleSelect( tableName, { page, size } )).toString()),
+    create: fields => db.one( (new SimpleInsert( tableName, { fields } )).toString() ),
     findOne: id => db.one( (new SimpleSelect( tableName, { where: [{ id }] } )).toString() ),
     update: ( id, fields ) => db.one( (new SimpleUpdate( tableName, id, fields )).toString() ),
-    create: fields => db.one( (new SimpleInsert( tableName, { fields } )).toString() )
+    delete: ( id ) => db.none( (new SimpleDelete(tableName, id)).toString() )
   }
 }
 
