@@ -1,11 +1,26 @@
 <div class="jumbotron">
   <div class="container">
-    <a class="btn btn-success btn-lg pull-right" href="/authors/edit/{{author_id}}" role="button">
-      Edit
-    </a>
-    <img class="thumbnail" src="{{image_url}}" />
-    <h3> {{author.name}} </h3>
-    <p>{{author.bio}}</p>
+    <div class="row pull-right">
+      <div class="col-md-5">
+        <a class="btn btn-success" href="/authors/edit/{{author_id}}" role="button">
+          Edit
+        </a>
+      </div>
+      <div class="col-md-5">
+        <a class="btn btn-danger" href="/authors/delete/{{author_id}}" role="button">
+          Delete
+        </a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <img class="thumbnail" src="{{author.image_url}}" />
+      </div>
+      <div class="col-md-9">
+        <h3> {{author.name}} </h3>
+        <p>{{author.bio}}</p>
+      </div>
+    </div>
   </div>
 </div>
 

@@ -6,9 +6,7 @@ class SimpleUpdate {
   }
 
   toString(){
-    const sql = `UPDATE ${this.table} SET ${this.updateFields()} WHERE id=${this.id} RETURNING id`
-    console.log('Update, SQL', sql);
-    return sql
+    return `UPDATE ${this.table} SET ${this.updateFields()} WHERE id=${this.id} RETURNING id`
   }
 
   updateFields() {
