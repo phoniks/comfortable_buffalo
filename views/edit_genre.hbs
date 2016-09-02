@@ -8,13 +8,16 @@
         <form method="post" action="/genres/edit_genre/{{id}}" role="form">
           <fieldset>
             <div class="form-group">
-              <label>Name:<label>
-              <input class="form-control" value="{{genre.name}}" name="name" type="text">
+              <label>Name: <label>
+              <div class="input-group">
+                <span class="input-group-addon glyphicon glyphicon-plus"></span>
+                <input class="form-control" value="{{genre.name}}" name="name" type="text">
+              </div>
             </div>
             <br/>
             <div class="form-group">
               <label>Description:</label>
-                <textarea class="form-control" type="text" rows="5" name="description">{{genre.description}}</textarea>
+              <textarea class="form-control" type="text" rows="5" name="description">{{genre.description}}</textarea>
             </div>
             <button class="btn btn-sm btn-success">Submit</button>
           </fieldset>

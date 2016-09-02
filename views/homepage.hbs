@@ -1,14 +1,16 @@
 <div class="jumbotron">
   <div class="container">
     <div class="row">
-    <h2> Books </h2>
+    <h2 class="text-center"> <u>Books</u> </h2>
+    <br />
       {{#each books}}
         <div class="col-md-3">
-          <img class="img-responsive" src="{{image_url}}" alt="Smiley face" />
-          <h4 class="display-3">{{title}}</h4>
+          <img class="img-responsive thumbnail" src="{{image_url}}" alt="Smiley face" />
+          <h4 class="display-3"><strong>{{title}}</strong></h4>
           <hr class="m-y-md">
           <p class="lead">
             <a class="btn btn-success btn-lg" href="/books/{{id}}" role="button">
+              <span class="glyphicon glyphicon-list"></span>
               Details
             </a>
           </p>
@@ -21,13 +23,15 @@
 <div class="jumbotron">
   <div class="container">
     <div class="row">
-    <h2> Genres </h2>
+    <h2 class="text-center"> <u>Genres</u> </h2>
+    <br/>
       {{#each genres}}
         <div class="col-md-3">
-          <h4 class="display-3">{{name}}</h4>
+          <h4 class="display-3"><strong>{{name}}</strong></h4>
           <hr class="m-y-md">
           <p class="lead">
             <a class="btn btn-success btn-lg" href="/genres/{{id}}" role="button">
+              <span class="glyphicon glyphicon-list"></span>
               Details
             </a>
           </p>
@@ -40,14 +44,16 @@
 <div class="jumbotron">
   <div class="container">
     <div class="row">
-    <h2> Authors </h2>
+    <h2 class="text-center"> <u>Authors</u> </h2>
+    <br />
       {{#each authors}}
         <div class="col-md-3">
-          <img class="img-responsive" src="{{image_url}}" alt="Smiley face" />
-          <h4 class="display-3">{{name}}</h4>
+          <img class="img-responsive thumbnail" src="{{image_url}}" alt="Smiley face" />
+          <h4 class="display-3"><strong>{{name}}</strong></h4>
           <hr class="m-y-md">
           <p class="lead">
             <a class="btn btn-success btn-lg" href="/authors/{{id}}" role="button">
+              <span class="glyphicon glyphicon-list"></span>
               Details
             </a>
           </p>
