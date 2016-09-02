@@ -60,8 +60,9 @@ router.get('/edit/:id', ( req, res ) => {
 
 router.post('/edit_book/:id', ( req, res ) => {
   const { id } = req.params
-  Book.update(id, req.body).then( book_id => {
-    debug(book_id)
+    debug('body: ', req.body)
+  Book.update(parseInt(id), req.body).then( book_id => {
+    debug('bookupdate: ')
     res.redirect( `/books/${id}` )
   })
 })
@@ -69,7 +70,8 @@ router.post('/edit_book/:id', ( req, res ) => {
 router.get('/delete/:id', ( req, res ) => {
   const { id } = req.params
   Book.delete(id).then( result => res.redirect( '/' ) )
-})
+  .catch(error => res.send( error.message ) )
+}) 
 
 router.get('/favorite/:id', (request, response) => {
   const { id: book_id } = request.params

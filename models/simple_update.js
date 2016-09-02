@@ -9,8 +9,9 @@ class SimpleUpdate {
   }
 
   toString(){
-    debug(this.fields)
-    return `UPDATE ${this.table} SET ${this.updateFields()} WHERE id=${this.id} RETURNING id`
+    const sql = `UPDATE ${this.table} SET ${this.updateFields()} WHERE id=${this.id} RETURNING id`
+    debug(sql)
+    return sql
   }
 
   updateFields() {
