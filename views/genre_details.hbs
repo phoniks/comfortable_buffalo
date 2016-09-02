@@ -1,11 +1,13 @@
 <div class="jumbotron">
   <div class="container">
     <div class="row pull-right">
+      {{#if user}}
       <div class="col-md-5">
         <a class="btn btn-success" href="/genres/edit/{{genre_id}}" role="button">
           <span class="glyphicon glyphicon-pencil"></span> Edit
         </a>
       </div>
+      {{/if}}
     </div>
     <img class="thumbnail" src="{{image_url}}" />
     <h3 class="page-header"> {{genre.name}} </h3>

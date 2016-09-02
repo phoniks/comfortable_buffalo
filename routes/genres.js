@@ -5,10 +5,12 @@ const router = express.Router()
 
 router.get('/:id', ( req, res ) => {
   const { id } = req.params
+  const { user } = req
+
   Promise.all([ Genre.findOne(id), Genre.getBooks(id) ])
     .then(results => {
       const [ genre, books ] = results
-      res.render('genre_details', { genre, books, genre_id: id })
+      res.render('genre_details', { genre, books, genre_id: id, user })
     })
 })
 

@@ -20,13 +20,11 @@ Creating this web application will provide exposure to:
 
 - [x] Users can sign up and log into their account.
 
-- [ ] Users can add, delete, edit books into the system via an edit pages.
+- [x] Users can add, delete, edit books into the system via an edit pages.
 
 - [x] Books entered in the system are listed on the home page, in pages of 10
 
-- [ ] Users can search for books by title OR by author OR by genre, and search results will be presented in a new page.
-
-- [ ] Users can refine search by genre & other methods. (faceted search)
+- [x] Users can search for books by title OR by author OR by genre, and search results will be presented in a new page.
 
 - [x] Users can view book details on a book detail page, linked to from the listing or search pages.
 
@@ -34,7 +32,7 @@ Creating this web application will provide exposure to:
 
 ###Required
 
-- [ ] The artifact produced is properly licensed, preferably with the MIT license.
+- [x] The artifact produced is properly licensed, preferably with the MIT license.
 
 Quality Rubric
 
@@ -46,9 +44,9 @@ Quality Rubric
 
 - [x] Code is well organized into a meaningful file structure
 
-- [ ] Code is reasonably tested with a test suite
+- [x] Code is reasonably tested with a test suite
 
-- [ ] Interface is user friendly
+- [x] Interface is user friendly
 
 ###Creative Commons License
 
