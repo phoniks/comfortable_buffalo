@@ -3,23 +3,31 @@
     <div class="row pull-right">
       <div class="col-md-5">
         <a class="btn btn-success" href="/genres/edit/{{genre_id}}" role="button">
-          Edit
+          <span class="glyphicon glyphicon-pencil"></span> Edit
         </a>
       </div>
     </div>
     <img class="thumbnail" src="{{image_url}}" />
-    <h3> {{genre.name}} </h3>
+    <h3 class="page-header"> {{genre.name}} </h3>
     <p>{{genre.description}}</p>
   </div>
 </div>
 
-<div class="jumbotron">
-  <div class="container">
-    {{#each books}}
-      <img class="thumbnail" src="{{image_url}}" />
-      <h3> {{title}} </h3>
-      <p>{{description}}</p>
-      <a href="#" class="btn btn-primary btn-default"><span class="glyphicon glyphicon-book"></span> View this title</a>
-      {{/each}}
+<h3 class="page-header">Books in {{genre.name}} genre: </h3>
+
+{{#each books}}
+  <div class="jumbotron">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-2">
+          <img class="thumbnail" src="{{image_url}}" />
+        </div>
+        <div class="col-md-10">
+          <h3> {{title}} </h3>
+          <p>{{description}}</p>
+        </div>
+        <a href="#" class="btn btn-primary btn-default"><span class="glyphicon glyphicon-book"></span> View this title</a>
+      </div>
+    </div>
   </div>
-</div>
+{{/each}}
