@@ -4,7 +4,7 @@ const router = express.Router()
 
 /* GET home page. */
 router.get('/', (req, res, next) => {
-  const { query } = req
+  const { query, user } = req
 
   const page = query.page || 1
   const size = query.size || 10
@@ -13,7 +13,7 @@ router.get('/', (req, res, next) => {
     Promise.all([ Book.all(1,4), Author.all(1,4), Genre.all(1,4)])
       .then( results => {
         const [ books, authors, genres ] = results
-        res.render( 'homepage', { books, authors, genres })
+        res.render( 'homepage', { books, authors, genres, user })
       })
   } else {
     Search.forBooks({ page, size, search_query: query.search_query })
@@ -23,7 +23,7 @@ router.get('/', (req, res, next) => {
 })
 
 router.get('/about', (req, res, next) => {
-      res.render( 'about')
-    })
+  res.render( 'about')
+})
 
 export default router

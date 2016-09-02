@@ -68,6 +68,18 @@ const Book = Object.assign(
       )
 
       return db.any( sql.toString() )
+    },
+    addFavorite: (book_id, user_id) => {
+      const query = new SimpleInsert( 'book_favorites ', { book_id, user_id }, true )
+      console.log( query.toString() )
+
+      return db.none( query.toString() )
+    },
+    isFavorite: (book_id, user_id) => {
+      const where = [{ book_id }, { user_id }]
+      const query = new SimpleSelect( 'book_favorites', { where })
+
+      return db.any( query.toString() )
     }
   },
   genericFunctions( 'books' )

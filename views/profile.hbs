@@ -1,26 +1,20 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-5 toppad pull-right col-md-offset-3 ">
-      <button href="/users/edit/{{userid}}">Edit Profile</button>
-    </div>
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
       <div class="panel panel-info">
         <div class="panel-heading">
-          <h4 class="panel-title pull-right">{{user.email}}</h4>
+          <h4 class="panel-title">{{user.email}}</h4>
+          <a class="profile-btn pull-right btn btn-default" href="/users/edit/{{user.id}}/{{user.email}}">Edit Email</a>
         </div>
         <div class="panel-body">
-          <div class="row">
-            <div class=" col-md-9 col-lg-9 ">
-                <h4>BOOK FAVORITES:</h4>
-                <ul>
-                  {{#each books}}
-                    <li>
-                      <img class="thumbnail" src="{{image_url}}" alt="Book Pic" />
-                      {{title}}
-                    </li>
-                  {{/each}}
-                </ul>
-            </div>
+          <div class="row container">
+            <h4><u>BOOK FAVORITES:</u></h4>
+            {{#each books}}
+              <div class="col-md-3 col-lg-3">
+                <strong>{{title}}</strong>
+                <img class="thumbnail" src="{{image_url}}" alt="Book Pic" />
+              </div>
+            {{/each}}
           </div>
         </div>
       </div>

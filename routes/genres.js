@@ -1,5 +1,6 @@
 import database, { Genre } from '../database'
 import express from 'express'
+import { loggedIn } from '../config/check-user'
 const router = express.Router()
 
 router.get('/:id', ( req, res ) => {
@@ -11,14 +12,14 @@ router.get('/:id', ( req, res ) => {
     })
 })
 
-router.get('/edit/:id', ( req, res ) => {
+router.get('/edit/:id', loggedIn, ( req, res ) => {
   const { id } = req.params
   Genre.findOne(id).then(genre => {
     res.render('edit_genre', { genre, id })
   })
 })
 
-router.post('/edit_genre/:id', ( req, res ) => {
+router.post('/edit_genre/:id', loggedIn, ( req, res ) => {
   const { id } = req.params
   Genre.update(parseInt(id), req.body).then( genre_id => {
     res.redirect( `/genres/${id}` )

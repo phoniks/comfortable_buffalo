@@ -10,3 +10,7 @@ a {
 .jumbotron {
   border-radius: 5px;
 }
+
+.profile-btn {
+  margin-top: -25px;
+}

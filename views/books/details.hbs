@@ -3,6 +3,35 @@
 <div class="jumbotron">
   <div class="container">
     <img width="75px" height="75px" class="thumbnail" src="{{book.image_url}}" />
+
+    {{#if user}}
+    <div class="row pull-right">
+      <div class="col-md-3">
+        <a class="btn btn-success" href="/books/edit/{{book.id}}" role="button">
+          Edit
+        </a>
+      </div>
+      <div class="col-md-4">
+        <a class="btn btn-danger" href="/books/delete/{{book.id}}" role="button">
+          Delete
+        </a>
+      </div>
+      {{#if isFavorite}}
+        <div class="col-md-4">
+          <div class="btn btn-default">
+            <span class="glyphicon glyphicon-star" style="font-size:15px;color:#ffd700;"></span>
+          </div>
+        </div>
+      {{else}}
+      <div class="col-md-3">
+        <a class="btn btn-warning" href="/books/favorite/{{book.id}}" role="button">
+          Favorite
+        </a>
+      </div>
+      {{/if}}
+    </div>
+    {{/if}}
+
     <h3>{{book.title}}</h3>
     <p>{{book.description}}</p>
   </div>

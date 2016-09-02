@@ -17,6 +17,7 @@ const getBook = id =>
 
 router.get( '/:id', ( req, res ) => {
   const { id } = req.params
+  const { user } = req
 
   getBook( id )
     .then( result => {
@@ -27,21 +28,23 @@ router.get( '/:id', ( req, res ) => {
         Promise.resolve( authors ),
         Promise.resolve( genres ),
         Genre.booksIn( genres[ 0 ].id ),
-        Author.booksBy( authors[ 0 ].id )
+        Author.booksBy( authors[ 0 ].id ),
+        Book.isFavorite( id, ( user || {} ).id || 0 )
       ])
     })
     .then( result => {
-      const [ book, authors, genres, booksInGenre, booksByAuthor ] = result
+      const [ book, authors, genres, booksInGenre, booksByAuthor, favorite ] = result
 
       const otherGenreBooks = booksInGenre.filter( genreBook => genreBook.id !== book.id )
       const otherAuthorBooks = booksByAuthor.filter( authorBook => authorBook.id !== book.id )
 
       res.render( 'books/details', {
-        book, authors, genres,
+        book, authors, genres, user,
         booksInGenre: otherGenreBooks,
         booksByAuthor: otherAuthorBooks,
         otherGenre: genres[ 0 ].name,
-        otherAuthor: authors[ 0 ].name
+        otherAuthor: authors[ 0 ].name,
+        isFavorite: favorite.length !== 0
       })
     }).catch(error => res.send( error.message ) )
 })
@@ -66,6 +69,15 @@ router.post('/edit_book/:id', ( req, res ) => {
 router.get('/delete/:id', ( req, res ) => {
   const { id } = req.params
   Book.delete(id).then( result => res.redirect( '/' ) )
+})
+
+router.get('/favorite/:id', (request, response) => {
+  const { id: book_id } = request.params
+  const { id: user_id } = request.user || {}
+
+  Book.addFavorite( book_id, user_id )
+    .then( result => response.redirect( `/books/${book_id}` ))
+    .catch( error => response.send( error.message ) )
 })
 
 export default router
