@@ -46,4 +46,26 @@ router.get( '/:id', ( req, res ) => {
     }).catch(error => res.send( error.message ) )
 })
 
+router.get('/edit/:id', ( req, res ) => {
+  const { id } = req.params
+  Book.getBookInfo(id).then(book => {
+    const populate = book[0]
+    debug(populate)
+    res.render('books/edit_book', { populate, id })
+  })
+})
+
+router.post('/edit_book/:id', ( req, res ) => {
+  const { id } = req.params
+  Book.update(id, req.body).then( book_id => {
+    debug(book_id)
+    res.redirect( `/books/${id}` )
+  })
+})
+
+router.get('/delete/:id', ( req, res ) => {
+  const { id } = req.params
+  Book.delete(id).then( result => res.redirect( '/' ) )
+})
+
 export default router
