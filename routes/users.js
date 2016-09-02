@@ -7,7 +7,6 @@ const router = express.Router()
 router.get('/', ( req, res ) => {
   const { user } = req
   User.getBooks(user.id).then(books => {
-    console.log('User Favorites', books);
     res.render('profile', { user, books })
   })
 })

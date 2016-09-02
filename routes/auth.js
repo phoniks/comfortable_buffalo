@@ -24,8 +24,6 @@ router.post( '/signup', ( req, res, next ) => {
 
   User.createUser( email, password )
     .then( user => {
-      console.log('User', user);
-
       req.login({ id: user.id, email}, error => {
         if( error ) {
           next( error )

@@ -6,7 +6,6 @@ class SimpleDelete {
 
   toString() {
     const sql = `DELETE FROM ${this.table} WHERE id=${this.id}`
-    console.log('delete', sql);
     return sql
   }
 }

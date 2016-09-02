@@ -16,7 +16,6 @@ import authors from './routes/authors'
 import genres from './routes/genres'
 import books from './routes/books'
 
-
 const sessionConfig = {
   secret: 'blarg',
   resave: false,
