@@ -2,7 +2,7 @@
   <div class="modal-dialog" style="margin-bottom:0">
     <div class="modal-content">
       <div class="panel-heading">
-          <h3 class="panel-title">Edit authors info</h3>
+          <h3 class="panel-title">Edit book info</h3>
       </div>
       <div class="panel-body">
         <form action="/books/edit_book/{{id}}" method="post" role="form">
@@ -11,7 +11,7 @@
               <label>Title:<label>
               <input class="form-control" placeholder="Fear and Loathing" value ="{{populate.title}}" name="title">
             </div>
-            <div class="form-group">
+            {{!-- <div class="form-group">
               <label>Author:<label>
               <input class="form-control" placeholder="Hunter S. Thompson" value ="{{populate.author_name}}" name="author">
             </div>
@@ -19,7 +19,7 @@
             <div class="form-group">
               <label>Genre:<label>
               <input class="form-control" placeholder="Gonzo Journalism" value ="{{populate.genre_name}}" name="genre">
-            </div>
+            </div> --}}
 
             <div class="form-group">
               <label>Cover Photo:<label>
@@ -28,7 +28,7 @@
 
             <div class="form-group">
               <label>Description:</label>
-                <textarea class="form-control" type="text" rows="5" >{{populate.description}}</textarea>
+                <input type="text" class="form-control" type="text" rows="5" name="description" value="{{populate.description}}"> 
             </div>
             <button class="btn btn-sm btn-success">Submit</button>
           </fieldset>
