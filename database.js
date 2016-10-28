@@ -19,10 +19,16 @@ const genericFunctions = tableName => {
     all: ( page, size ) => db.any( (new SimpleSelect( tableName, { page, size } )).toString()),
     create: fields => db.one( (new SimpleInsert( tableName, { fields } )).toString() ),
     findOne: id => db.one( (new SimpleSelect( tableName, { where: [{ id }] } )).toString() ),
-    update: ( id, fields ) => db.one( (new SimpleUpdate( tableName, id, fields )).toString() ),
+    update: ( id, fields ) => db.one( (new SimpleUpdate( tableName, id, fields ) ).toString() ),
     delete: ( id ) => db.none( (new SimpleDelete(tableName, id)).toString() )
   }
 }
+
+const selectAllBooks = () => {
+  return db.any( 'SELECT * FROM books' )
+}
+
+module.exports = { selectAllBook }
 
 const User = Object.assign(
   {
